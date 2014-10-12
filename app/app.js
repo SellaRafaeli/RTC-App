@@ -4,9 +4,8 @@ app.config(function($routeProvider){
   $routeProvider.when("/",
     {
       templateUrl: "login.html",
-      controller: "loginCtrl"
-    }
-  	).when('/profile', {
+      controller: "LoginCtrl"
+    }).when('/profile', {
   		templateUrl: "profile.html",      
   		//controller: "MainCtrl"
     }).when('/profile2', {
@@ -15,15 +14,13 @@ app.config(function($routeProvider){
     });
 });
 
-
-
-app.controller("loginCtrl", function($scope, $routeParams, $location, $rootScope){  
+function LoginCtrl($scope, $routeParams, $location, $rootScope, Comm) {
   g1 = $scope; // Expose $scope for debugging.  
 
-  $scope.submit = function() {
-    if (true || ($scope.username == "Sella")) {    	
-      $rootScope.current_user = {username: $scope.username};      
-      $location.path('/profile')
-    }
+  $scope.signin = function() {
+    user_params = { username: $scope.username };
+    Comm.signin(user_params, function(err, user) {
+      $rootScope.current_user = user_params;
+    });
   };
-});
+}
