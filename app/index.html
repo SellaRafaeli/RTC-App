@@ -2,21 +2,20 @@
 <html>
 
 <head>
-
-<script src="/bower_components/angular/angular.min.js"></script>
-<script src="/app/app.js"></script>
-
+	<script src="/bower_components/angular/angular.min.js"></script>
+	<script src="/bower_components/angular-route/angular-route.min.js"></script>
+  <script src="/app/app.js"></script>  
 </head>
 
 <body>
 
+
 <div ng-app="RTC">
-  <div ng-controller="MainCtrl">
-    <p ng-if="current_user">Current User: {{current_user}}</p>
-    <p>Username: <input type="text" ng-init="username = 'Sella'" ng-model="username"></p>
-    <p>Password: <input type="password" ng-model="password"></p>
-    <p><button ng-click="submit()">Login</button></p>
-    <p>{{username}}, {{password}}</p>
+	<div ng-if='current_user'>  
+		<a href="#/profile">Profile</a>
+		<a href="#/profile2">Profile2</a>
+	</div>
+	<div ng-view>	  
   </div>
 </div>
 
