@@ -7,7 +7,7 @@ app.config(function($routeProvider){
       controller: "LoginCtrl"
     }).when('/profile', {
   		templateUrl: "profile.html",      
-  		//controller: "MainCtrl"
+  		controller: "ProfileCtrl"
     }).when('/profile2', {
   		templateUrl: "profile2.html",      
   		//controller: "MainCtrl"
@@ -19,8 +19,17 @@ function LoginCtrl($scope, $routeParams, $location, $rootScope, Comm) {
 
   $scope.signin = function() {
     user_params = { username: $scope.username };
-    Comm.signin(user_params, function(err, user) {
-      $rootScope.current_user = user_params;
+    Comm.signin(user_params, function(res) {
+      $rootScope.current_user = res.data.user;
+      $location.path('/profile');
     });
   };
+}
+
+function ProfileCtrl($scope, Comm) {
+	$scope.userdata = {a:1}
+
+	Comm.getUserData({},function(res){ 
+		$scope.userdata = res.data;
+	})
 }

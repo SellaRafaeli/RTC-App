@@ -1,17 +1,21 @@
 app.service("Comm", function($http) {
   //http = $http;
+  function doGet(route, cb) { 
+      $http.get(route).then(cb).catch(console.log);
+  }
 
   var res = {
-    message: "New data from a service",
+    message: "New data from a service",    
 
     signin: function(params, cb) {
-      if (params.username == "sella") {
-        return cb();
-      }
-      
-      //$http.post('/questions/'+qId+'/initA2A', {authToken: AuthService.currentUser.authToken, qId: qId, targetEmail: targetEmail}).then(cb).catch(genericErrHandler);
-    }
-  };
+      doGet('/mocks/signin.json',cb);      
+    },
+
+    getUserData: function(params, cb) {
+      doGet('/mocks/userdata.json',cb);      
+    }          
+  }
+  
 
   return res;
 });
