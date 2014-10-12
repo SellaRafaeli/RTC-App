@@ -1,3 +1,3 @@
 "use strict";
 
-var RTC = angular.module('RTC', ['']);
+var RTC = angular.module('RTC', []);
