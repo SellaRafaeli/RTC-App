@@ -2,3 +2,10 @@
 <h1>Hi {{current_user.username}}!</h1>
 <div> Userdata is {{userdata}} </div>
 <h3>Main Profile page</h3>
+
+<input type="text" ng-model="myFilter" placeholder='filter'>
+
+<a ng-if=userdata.transactions.length href="/intuit/connect" class="btn btn-primary">Connect from QuickBooks</a>
+<ul>
+  <li ng-repeat="(idx,item) in userdata.transactions | filter:myFilter">{{item.type}} | {{item.value}}</li>
+</ul>

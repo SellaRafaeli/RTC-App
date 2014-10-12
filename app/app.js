@@ -27,6 +27,7 @@ function LoginCtrl($scope, $routeParams, $location, $rootScope, Comm) {
 }
 
 function ProfileCtrl($scope, Comm) {
+	p1 = $scope;
 	$scope.userdata = {a:1}
 
 	Comm.getUserData({},function(res){ 
