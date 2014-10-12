@@ -1,0 +1,18 @@
+Notes.txt
+
+Authentication flow:
+
+1. When user clicks on 'Connect to quickBooks', client should query server at localhost:8000/auth/intuit
+
+2. Server should return location, should be something like 
+	 https://appcenter.intuit.com/Connect/Begin?oauth_token=2384982739487
+
+3. User goes to that URL, authorizes us. 
+
+4. Intuit sends user back to : (TBD)
+		
+5. App grabs return, and calls /auth/intuit/callback?oauth_token=28379723487&oauth_verifier=47598475&realmId=24980298&dataSource=QBO.  
+
+6. Now, user has been authenticated with QuickBooks in our app. 
+
+7. Tell user: Done authenticating. Move him to profile page, show basic company info. 
